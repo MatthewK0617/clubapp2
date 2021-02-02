@@ -12,7 +12,7 @@ function Directory() {
         <div class="container mx-auto">
             <div>
                 <h1 class="text-4xl font-black text-gray-900 pb-6 px-6 md:px-12">
-                    test
+                    Clubs
                 </h1>
             </div>
             <div class="flex flex-wrap px-6">
