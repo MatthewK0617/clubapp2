@@ -1,103 +1,82 @@
-import React from "react";
+import { React, useContext } from "react";
+// import axios from "axios";
 import { Link } from "@reach/router";
+import Navigation from "./Navigation/Navigation";
+import SearchBar from "./SearchBar/SearchBar";
+import AppContext from "./AppContext";
+// import { Transition } from "react-transition-group";
+
 
 function Directory() {
+  let {index, setIndex, data, setData} = useContext(AppContext);
 
-    let onSelectHandler = () => {
+  let onClickCard = (i) => {
+    index = i;
+    setIndex(index);
+  };
 
-    }
+  const mapDataSet = data.map((data, i) => (
+    <div class="z-0 w-full lg:w-1/3 md:px-4 lg:px-6 py-5">
+      <div
+        class="z-0 bg-snow shadow-xl hover:z-0 hover:opacity-60 active:ring-2 active:ring-majorelleblue cursor-pointer"
+        onClick={(_) => {
+          onClickCard(i);
+        }}
+      >
+        <Link to="/test">
+          <div class="">
+            <img
+              src="https://media.istockphoto.com/photos/non-profit-picture-id500073478?k=6&m=500073478&s=612x612&w=0&h=COeazXKP3eBv8eLGPhPsOkpt3xcC6qcDBd4KDD2efdE="
+              alt=""
+              class="h-56 w-full border-white"
+            />
+          </div>
+          <div class="px-4 py-4 md:px-10">
+            <h1 class="font-bold text-lg">
+              {data.name} {i}
+            </h1>
+            <p class="py-4">{data.Description}</p>
+            <div class="flex flex-wrap pt-8">
+              <div class="w-full md:w-1/3 text-sm font-medium">
+                {/* NOVEMBER 1,2019 */}
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    </div>
+  ));
 
   return (
-    <section class="bg-blue-200 py-12 h-screen">
-        <div class="container mx-auto">
-            <div>
-                <h1 class="text-4xl font-black text-gray-900 pb-6 px-6 md:px-12">
-                    Clubs
-                </h1>
-            </div>
-            <div class="flex flex-wrap px-6">
-                <div class="w-full lg:w-1/2 md:px-4 lg:px-6 py-5">
-                    <div class="bg-white hover:shadow-xl">
-                        <div class="">
-                            <img src="https://images.pexels.com/photos/956999/milky-way-starry-sky-night-sky-star-956999.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""
-                                class="h-56 w-full border-white border-8 hover:opacity-25" />
-                        </div>
-                        <div class="px-4 py-4 md:px-10">
-                            <h1 class="font-bold text-lg">
-                                Tech Club
-                            </h1>
-                            <p class="py-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quas sapiente
-                                voluptate
-                                earum natus facilis dolor deserunt dolorum tempora obcaecati consequatur rem, vel
-                                distinctio
-                                perferendis tempore nemo sequi eos accusantium.
-                            </p>
-                            <div class="flex flex-wrap pt-8">
-                                <div class="w-full md:w-1/3 text-sm font-medium">
-                                    {/* NOVEMBER 1,2019 */}
-                                </div>
-                                <div class="2/3">
-                                    <div class="text-sm font-medium">
-                                        SHARE:
-                                        <a href="" class="text-blue-700 px-1 ">
-                                            FACEBOOK
-                                        </a>
-                                        <a href="" class="text-blue-500 px-1 ">
-                                            TWITTER
-                                        </a>
-                                        <a href="" class="text-red-600 px-1 ">
-                                            GOOGLE+
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="w-full lg:w-1/2  md:px-4 lg:px-6 py-5">
-                    <div class="bg-white hover:shadow-xl">
-                        <div class="">
-                            <img src="https://images.pexels.com/photos/952670/pexels-photo-952670.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" alt=""
-                                class="h-56 w-full border-white border-8 hover:opacity-25" />
-                        </div>
-                        <div class="px-4 py-4 md:px-10">
-                            <h1 class="font-bold text-lg">
-                                Writer's Block
-                            </h1>
-                            <p class="py-4">
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi quas sapiente
-                                voluptate
-                                earum natus facilis dolor deserunt dolorum tempora obcaecati consequatur rem, vel
-                                distinctio
-                                perferendis tempore nemo sequi eos accusantium.
-                            </p>
-                            <div class="flex flex-wrap pt-8">
-                                <div class="w-full md:w-1/3 text-sm font-medium">
-                                    {/* NOVEMBER 1,2019 */}
-                                </div>
-                                <div class="md:2/3">
-                                    <div class="text-sm font-medium">
-                                        SHARE:
-                                        <a href="" class="text-blue-700 px-1 ">
-                                            FACEBOOK
-                                        </a>
-                                        <a href="" class="text-blue-500 px-1 ">
-                                            TWITTER
-                                        </a>
-                                        <a href="" class="text-red-600 px-1 ">
-                                            GOOGLE+
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+    <div class="bg-aliceblue h-auto">
+      <div class="z-20 bg-ivory fixed">
+        <Navigation />
+      </div>
+      <div class="z-10 flex h-100 fixed bg-ivory w-full shadow-2xl">
+        <div class="inline text-4xl font-black text-gray-900 py-5 px-5 mx-24 md:px-4 flex-1 self-center">
+          Clubs
         </div>
-    </section>
+        <Link
+          to="/signUp"
+          class="inline text-4x1 font-normal text-gray-900 py-3 px-5 md:px-4 self-center justify-self-end hover:bg-mbpurple focus:ring-2 focus:ring-blue-600 rounded-lg"
+        >
+          Sign Up
+        </Link>
+        <Link
+          to="/signIn"
+          class="inline text-2x1 font-normal text-gray-500 py-3 px-5 md:px-4 self-center justify-self-end hover:bg-mbpurple focus:ring-2 focus:ring-blue-600 rounded-lg"
+        >
+          Sign In
+        </Link>
+      </div>
+      <div class="container mx-auto">
+        <hr class="w-0.5" />
+        <div class="container flex flex-wrap px-6 pt-20">{mapDataSet}</div>
+      </div>
+      <div>
+        <SearchBar />
+      </div>
+    </div>
   );
 }
 

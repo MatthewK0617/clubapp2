@@ -1,0 +1,56 @@
+.moreinfo-container {
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: lightblue;
+    height: 100vh;
+    flex-direction: column;
+    /* overflow: hidden; */
+    /* width: 100%; */
+}
+
+.name {
+    color: black;
+    font-weight: bold;
+    font-size: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
+}
+
+.description {
+    font-size: 25px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-left: 15px;
+
+}
+
+.button-wrapper {
+    background-color: aliceblue;
+    border-top-width: 1px;
+    border-color: black;
+    display: flex;
+    justify-content: flex-end;
+    bottom: 0px;
+    left: 0px;
+    position: fixed;
+    width: 100vw;
+}
+
+.collaborate-button {
+    border-radius: 10px;
+    padding: 10px;
+    width: max-content;
+    font-size: 20px;
+    background-color: rgb(168, 184, 167);
+    margin: 5px;
+}
+
+.directory-button {
+    border-radius: 10px;
+    padding: 10px;
+    width: max-content;
+    font-size: 20px;
+    background-color: rgb(206, 228, 228);
+    /* flex:auto; */
+    margin: 5px;
+}
