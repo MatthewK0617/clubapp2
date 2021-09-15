@@ -15,7 +15,10 @@ module.exports = {
       mbpurple: '#B8B8FF',
       black: '#000000',
       paradisepink: '#EA526F',
-      majorelleblue: '#574AE2'
+      majorelleblue: '#574AE2',
+      green: "#00cc00",
+      red: "#ff0000",
+      blue1: "#0099ff",
     }
   },
   variants: {
