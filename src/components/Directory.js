@@ -8,15 +8,15 @@ import AppContext from "./AppContext";
 
 
 function Directory() {
-  let {index, setIndex, data, setData} = useContext(AppContext);
+  let {index, setIndex, clubs, setClubs} = useContext(AppContext);
 
   let onClickCard = (i) => {
     index = i;
     setIndex(index);
   };
 
-  const mapDataSet = data.map((data, i) => (
-    <div class="z-0 w-full lg:w-1/3 md:px-4 lg:px-6 py-5">
+  const mapDataSet = clubs.map((data, i) => (
+    <div key={i} class="z-0 w-full lg:w-1/3 md:px-4 lg:px-6 py-5">
       <div
         class="z-0 bg-snow shadow-xl hover:z-0 hover:opacity-60 active:ring-2 active:ring-majorelleblue cursor-pointer"
         onClick={(_) => {

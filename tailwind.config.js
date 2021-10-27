@@ -1,5 +1,5 @@
 module.exports = {
-  purge: ['./src/components/ProfilePage', './src/components/SignUp', './src/components/SignIn'],
+  purge: ['./src/components/ProfilePage', './src/components/SignUp', './src/components/SignIn'], // look into this
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},

@@ -2,14 +2,14 @@ import firebase from "firebase";
 // import { functions } from "firebase";
 
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBxowBwsC6KeV6LHeQTxkeG8H2TMchF_W4",
   authDomain: "club-app-a2207.firebaseapp.com",
   projectId: "club-app-a2207",
   storageBucket: "club-app-a2207.appspot.com",
   messagingSenderId: "891883139542",
   appId: "1:891883139542:web:bb6c34cff9af2878c0b477",
-  measurementId: "G-7R0XQZY16X",
+  measurementId: "G-7R0XQZY16X"
 };
 
 // Initialize Firebase
@@ -56,5 +56,42 @@ const getUserDocument = async uid => {
     };
   } catch (error) {
     console.error("Error fetching user", error);
+  }
+};
+
+
+export const generateSchoolDocument = async(school, additionalData) => {
+  if (!school) return;
+
+  const schoolRef = firestore.doc(`Schools/${school.uid}`);
+  const snapshot1 = await schoolRef.get();
+
+  if (!snapshot1.exists) {
+    const { clubs, displayName, photoURL } = school; // change
+    try {
+      await schoolRef.set({
+        clubs,
+        displayName,
+        photoURL,
+        ...additionalData
+      });
+    } catch (error) {
+      console.error("Error creating school document", error);
+    }
+  }
+  return getSchoolDocument(school.uid);
+}
+
+export const getSchoolDocument = async uid => {
+  if (!uid) return null;
+  try {
+    const schoolDocument = await firestore.doc(`Schools/${uid}`).get();
+
+    return {
+      uid,
+      ...schoolDocument.data()
+    };
+  } catch (error) {
+    console.error("Error fetching school", error);
   }
 };
